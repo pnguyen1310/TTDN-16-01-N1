@@ -3,14 +3,21 @@
     <data>
         <menuitem
             id="menu_root"
-            name="QLNS"
+            name="Quản lý nhân sự"
             sequence="0"/>
           
-        <menuitem name="Quản lý nhân viên" 
+        <menuitem name="Nhân viên" 
             id="menu_nhan_vien" 
             parent="menu_root" 
             sequence="1"
             action="action_nhan_vien"
+        />
+
+        <menuitem name="Phòng ban" 
+            id="menu_phong_ban" 
+            parent="menu_root" 
+            sequence="2"
+            action="action_phong_ban"
         />
     </data>
 </odoo>

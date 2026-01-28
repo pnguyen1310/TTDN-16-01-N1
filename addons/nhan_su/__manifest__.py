@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "nhan_su",
+    'name': "quan_ly_nhan_su",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Module quản lý nhân sự""",
 
     'description': """
-        Long description of module's purpose
+        Module quản lý nhân sự cho phép theo dõi và quản lý thông tin nhân viên,
+        bao gồm thông tin cá nhân, chức vụ, phòng ban và các dữ liệu liên quan.
     """,
 
-    'author': "My Company",
+    'author': "pnguyen",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/nhan_vien.xml',
+        'views/phong_ban.xml',
         'views/menu.xml',
     ],
     # only loaded in demonstration mode
