@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_cong_viec_form" model="ir.ui.view">
+            <field name="name">cong_viec.form</field>
+            <field name="model">cong_viec</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_bat_dau" string="Bắt đầu" type="object" 
+                                class="btn-primary" attrs="{'invisible': [('trang_thai', '!=', 'moi')]}"/>
+                        <button name="action_hoan_thanh" string="Hoàn thành" type="object" 
+                                class="btn-success" attrs="{'invisible': [('trang_thai', '=', 'hoan_thanh')]}"/>
+                        <button name="action_huy" string="Hủy" type="object" 
+                                class="btn-danger" attrs="{'invisible': [('trang_thai', 'in', ['hoan_thanh', 'huy'])]}"/>
+                        <button name="action_sync_google_calendar" string="Đồng bộ Google Calendar" type="object" 
+                                class="btn-info" attrs="{'invisible': [('sync_to_google_calendar', '=', False)]}"
+                                icon="fa-calendar"/>
+                        <field name="trang_thai" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="tieu_de" placeholder="Tiêu đề công việc"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Thông tin cơ bản">
+                                <field name="ma_cong_viec"/>
+                                <field name="loai_cong_viec"/>
+                                <field name="khach_hang_id"/>
+                                <field name="phong_ban_phu_trach_id"/>
+                                <field name="nguoi_thuc_hien_id" readonly="1"/>
+                                <field name="muc_do_uu_tien"/>
+                            </group>
+                            <group string="Thời gian">
+                                <field name="ngay_bat_dau"/>
+                                <field name="ngay_hoan_thanh"/>
+                                <field name="thoi_luong"/>
+                            </group>
+                            <group string="Google Calendar">
+                                <field name="sync_to_google_calendar"/>
+                                <field name="google_calendar_event_id" attrs="{'invisible': [('google_calendar_event_id', '=', False)]}"/>
+                                <field name="last_sync_date" attrs="{'invisible': [('last_sync_date', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string="Thông tin báo giá" attrs="{'invisible': [('loai_cong_viec', '!=', 'gui_bao_gia')]}">
+                            <field name="gia_tri_bao_gia"/>
+                            <field name="trang_thai_bao_gia"/>
+                        </group>
+                        <group string="Mô tả">
+                            <field name="mo_ta" nolabel="1"/>
+                        </group>
+                        <group string="Kết quả">
+                            <field name="ket_qua" nolabel="1"/>
+                        </group>
+                        <group string="Ghi chú">
+                            <field name="ghi_chu" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_cong_viec_tree" model="ir.ui.view">
+            <field name="name">cong_viec.tree</field>
+            <field name="model">cong_viec</field>
+            <field name="arch" type="xml">
+                <tree decoration-success="trang_thai == 'hoan_thanh'" 
+                      decoration-danger="trang_thai == 'huy'"
+                      decoration-info="trang_thai == 'dang_thuc_hien'">
+                    <field name="ma_cong_viec"/>
+                    <field name="tieu_de"/>
+                    <field name="loai_cong_viec"/>
+                    <field name="khach_hang_id"/>
+                    <field name="phong_ban_phu_trach_id"/>
+                    <field name="phong_ban_phu_trach_id"/>
+                    <field name="muc_do_uu_tien"/>
+                    <field name="ngay_bat_dau"/>
+                    <field name="ngay_hoan_thanh"/>
+                    <field name="trang_thai"/>
+                    <field name="sync_to_google_calendar" widget="boolean_toggle"/>
+                    <field name="google_calendar_event_id" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_cong_viec_kanban" model="ir.ui.view">
+            <field name="name">cong_viec.kanban</field>
+            <field name="model">cong_viec</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="trang_thai">
+                    <field name="ma_cong_viec"/>
+                    <field name="tieu_de"/>
+                    <field name="loai_cong_viec"/>
+                    <field name="khach_hang_id"/>
+                    <field name="phong_ban_phu_trach_id"/>
+                    <field name="muc_do_uu_tien"/>
+                    <field name="ngay_bat_dau"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_content">
+                                    <strong><field name="tieu_de"/></strong>
+                                    <div>Khách hàng: <field name="khach_hang_id"/></div>
+                                    <div>Loại: <field name="loai_cong_viec"/></div>
+                                    <div>Mã: <field name="ma_cong_viec"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cong_viec_search">
+            <field name="name">cong_viec.search</field>
+            <field name="model">cong_viec</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_cong_viec"/>
+                    <field name="tieu_de"/>
+                    <field name="khach_hang_id"/>
+                    <field name="nguoi_thuc_hien_id"/>
+                    <filter string="Gọi điện" name="goi_dien" domain="[('loai_cong_viec', '=', 'goi_dien')]"/>
+                    <filter string="Gửi báo giá" name="gui_bao_gia" domain="[('loai_cong_viec', '=', 'gui_bao_gia')]"/>
+                    <filter string="Lịch hẹn" name="lich_hen" domain="[('loai_cong_viec', '=', 'lich_hen')]"/>
+                    <separator/>
+                    <filter string="Mới" name="moi" domain="[('trang_thai', '=', 'moi')]"/>
+                    <filter string="Đang thực hiện" name="dang_thuc_hien" domain="[('trang_thai', '=', 'dang_thuc_hien')]"/>
+                    <filter string="Hoàn thành" name="hoan_thanh" domain="[('trang_thai', '=', 'hoan_thanh')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Loại công việc" name="group_loai" context="{'group_by': 'loai_cong_viec'}"/>
+                        <filter string="Trạng thái" name="group_trang_thai" context="{'group_by': 'trang_thai'}"/>
+                        <filter string="Khách hàng" name="group_khach_hang" context="{'group_by': 'khach_hang_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_cong_viec" model="ir.actions.act_window">
+            <field name="name">Công việc</field>
+            <field name="res_model">cong_viec</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+    </data>
+</odoo>

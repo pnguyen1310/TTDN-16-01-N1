@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_khach_hang_form_cong_viec" model="ir.ui.view">
+            <field name="name">khach_hang.form.cong_viec</field>
+            <field name="model">khach_hang</field>
+            <field name="inherit_id" ref="quan_ly_khach_hang.view_khach_hang_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="Công việc">
+                            <field name="cong_viec_ids">
+                                <tree>
+                                    <field name="ma_cong_viec"/>
+                                    <field name="tieu_de"/>
+                                    <field name="loai_cong_viec"/>
+                                    <field name="nguoi_thuc_hien_id"/>
+                                    <field name="trang_thai"/>
+                                    <field name="ngay_bat_dau"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
