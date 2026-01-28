@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_phan_hoi_form" model="ir.ui.view">
+            <field name="name">phan_hoi.form</field>
+            <field name="model">phan_hoi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="tieu_de" placeholder="Tiêu đề phản hồi"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Thông tin phản hồi">
+                                <field name="ma_phan_hoi"/>
+                                <field name="khach_hang_id"/>
+                                <field name="nhan_vien_danh_gia_id"/>
+                                <field name="ngay_phan_hoi"/>
+                            </group>
+                            <group string="Đánh giá (1-5)">
+                                <field name="muc_do_hai_long"/>
+                            </group>
+                        </group>
+                        <group string="Nội dung phản hồi">
+                            <field name="noi_dung_phan_hoi" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_phan_hoi_tree" model="ir.ui.view">
+            <field name="name">phan_hoi.tree</field>
+            <field name="model">phan_hoi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_phan_hoi"/>
+                    <field name="tieu_de"/>
+                    <field name="khach_hang_id"/>
+                    <field name="nhan_vien_danh_gia_id"/>
+                    <field name="muc_do_hai_long"/>
+                    <field name="ngay_phan_hoi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_phan_hoi" model="ir.actions.act_window">
+            <field name="name">Phản hồi khách hàng</field>
+            <field name="res_model">phan_hoi</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

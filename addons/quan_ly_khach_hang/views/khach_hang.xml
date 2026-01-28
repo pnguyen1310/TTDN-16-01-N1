@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_khach_hang_form" model="ir.ui.view">
+            <field name="name">khach_hang.form</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten_khach_hang" placeholder="Tên khách hàng"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Thông tin cơ bản">
+                                <field name="ma_khach_hang"/>
+                                <field name="loai_khach_hang"/>
+                                <field name="so_dien_thoai"/>
+                                <field name="email"/>
+                                <field name="ngay_sinh"/>
+                                <field name="dia_chi"/>
+                            </group>
+                            <group string="Phân loại">
+                                <field name="trang_thai"/>
+                                <field name="nguoi_phu_trach_id"/>
+                            </group>
+                        </group>
+                        <group string="Thông tin doanh nghiệp" attrs="{'invisible': [('loai_khach_hang', '=', 'ca_nhan')]}">
+                            <field name="ma_so_thue"/>
+                            <field name="website"/>
+                        </group>
+                        <group string="Ghi chú">
+                            <field name="ghi_chu" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_khach_hang_tree" model="ir.ui.view">
+            <field name="name">khach_hang.tree</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_khach_hang"/>
+                    <field name="ten_khach_hang"/>
+                    <field name="loai_khach_hang"/>
+                    <field name="so_dien_thoai"/>
+                    <field name="email"/>
+                    <field name="ngay_sinh"/>
+                    <field name="trang_thai"/>
+                    <field name="nguoi_phu_trach_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="khach_hang_search">
+            <field name="name">khach_hang.search</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_khach_hang"/>
+                    <field name="ten_khach_hang"/>
+                    <field name="so_dien_thoai"/>
+                    <field name="email"/>
+                    <filter string="Cá nhân" name="ca_nhan" domain="[('loai_khach_hang', '=', 'ca_nhan')]"/>
+                    <filter string="Doanh nghiệp" name="doanh_nghiep" domain="[('loai_khach_hang', '=', 'doanh_nghiep')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Loại khách hàng" name="group_loai" context="{'group_by': 'loai_khach_hang'}"/>
+                        <filter string="Trạng thái" name="group_trang_thai" context="{'group_by': 'trang_thai'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_khach_hang" model="ir.actions.act_window">
+            <field name="name">Khách hàng</field>
+            <field name="res_model">khach_hang</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
