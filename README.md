@@ -129,8 +129,58 @@ Ngoài ra có thể thêm mổ số parameters như:
 ### 4.7. Chạy hệ thống và cài đặt các ứng dụng cần thiết
 
 Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ để đăng nhập vào hệ thống.
-    
-## 📞 5. Liên hệ
+
+##  5. Hình ảnh các giao diện
+###  Giao diện Dashboard
+<p align="center">
+  <img src="images/Capture1.PNG" alt="Giao diện Dashboard" width="450" />
+  <br>
+ <em> Hình 1: Giao diện Dashboard </em>
+</p>
+
+###  Giao diện quản lý nhân sự
+<p align="center">
+  <img src="images/Capture2.PNG" alt="Giao diện quản lý nhân sự" width="450" />
+  <br>
+ <em> Hình 2: Giao diện quản lý nhân sự </em>
+</p>
+
+###  Giao diện phản Chatbot hỗ trợ giải đáp nội quy
+<p align="center">
+  <img src="images/Capture3.PNG" alt="Giao diện phản Chatbot hỗ trợ giải đáp nội quy" width="450" />
+  <br>
+<em> Hình 3: Giao diện phản Chatbot hỗ trợ giải đáp nội quy </em>
+</p>
+
+###  Giao diện quản lý khách hàng
+<p align="center">
+  <img src="images/Capture4.PNG" alt="Giao diện quản lý khách hàng" width="450" />
+  <br>
+<em> Hình 4: Giao diện quản lý khách hàng </em>
+</p>
+
+###  Giao diện chiến dịch marketing
+<p align="center">
+  <img src="images/Capture5.PNG" alt="Giao diện chiến dịch marketing" width="450" />
+  <br>
+<em> Hình 5: Giao diện chiến dịch marketing </em>
+</p>
+
+###  Giao diện quản lý công việc
+<p align="center">
+  <img src="images/Capture6.PNG" alt="Giao diện quản lý công việc" width="450" />
+  <br>
+<em> Hình 6: Giao diện quản lý công việc </em>
+</p>
+
+###  Giao diện lịch đồng bộ với quản lý công việc
+<p align="center">
+  <img src="images/Capture7.PNG" alt="Giao diện lịch đồng bộ với quản lý công việc" width="450" />
+  <br>
+<em> Hình 7: Giao diện lịch đồng bộ với quản lý công việc </em>
+</p>
+
+## 📞 6. Liên hệ
 - 👨‍🎓 **Sinh viên thực hiện**: Nguyễn Đào Phúc Nguyên
 - 🎓 **Khoa**: Công nghệ thông tin – Đại học Đại Nam
 - 📧 **Email**: nguyendaophucnguyen13@gmail.com
