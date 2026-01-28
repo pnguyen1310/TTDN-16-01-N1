@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_chatbot_noiquy_chat" model="ir.actions.act_window">
+        <field name="name">Chatbot Hỏi Đáp</field>
+        <field name="res_model">chatbot.noiquy.chat</field>
+        <field name="view_mode">form,tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hỏi Chatbot bất cứ câu hỏi nào! 🤖
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_chatbot_noiquy_root" name="Chatbot" sequence="10" icon="fa-comments"/>
+    <menuitem id="menu_chatbot_noiquy_chat"
+              name="Hỏi Chatbot"
+              parent="menu_chatbot_noiquy_root"
+              action="action_chatbot_noiquy_chat"
+              sequence="10"/>
+
+    <record id="view_chatbot_noiquy_chat_tree" model="ir.ui.view">
+        <field name="name">chatbot.noiquy.chat.tree</field>
+        <field name="model">chatbot.noiquy.chat</field>
+        <field name="arch" type="xml">
+            <tree string="Lịch sử hỏi đáp" create="false">
+                <field name="create_date" string="Thời gian"/>
+                <field name="question" string="Câu hỏi"/>
+                <field name="answer" string="Trả lời"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_chatbot_noiquy_chat_form" model="ir.ui.view">
+        <field name="name">chatbot.noiquy.chat.form</field>
+        <field name="model">chatbot.noiquy.chat</field>
+        <field name="arch" type="xml">
+            <form string="Chatbot - Hỏi Đáp">
+                <header>
+                    <button name="action_ask" type="object" string="🚀 Gửi câu hỏi" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Hỏi Chatbot Thông Minh</h1>
+                    </div>
+                    <group string="Câu hỏi của bạn">
+                        <field name="question" 
+                               placeholder="Hỏi về nội quy công ty, kỹ năng, kiến thức..." 
+                               nolabel="1"/>
+                    </group>
+                    <group string="Trả lời từ Chatbot" attrs="{'invisible': [('answer', '=', False)]}">
+                        <field name="answer" 
+                               nolabel="1"
+                               readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

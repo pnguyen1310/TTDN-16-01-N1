@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_chatbot_noiquy_chat" model="ir.actions.act_window">
+        <field name="name">Chatbot Hỏi Đáp</field>
+        <field name="res_model">chatbot.noiquy.chat</field>
+        <field name="view_mode">form,tree</field>
+    </record>
+
+    <!-- Menu Chatbot độc lập -->
+    <menuitem id="menu_chatbot_root" name="Chatbot" sequence="10"/>
+    <menuitem id="menu_chatbot_chat" name="Hỏi Chatbot" parent="menu_chatbot_root" action="action_chatbot_noiquy_chat" sequence="10"/>
+
+    <!-- Menu Chatbot trong Quản lý nhân sự -->
+    <menuitem id="menu_nhan_su_chatbot" name="Chatbot Nội Quy" parent="nhan_su.menu_root" action="action_chatbot_noiquy_chat" sequence="50"/>
+
+    <record id="view_chatbot_form" model="ir.ui.view">
+        <field name="name">chatbot.noiquy.chat.form</field>
+        <field name="model">chatbot.noiquy.chat</field>
+        <field name="arch" type="xml">
+            <form string="Chatbot Hỏi Đáp">
+                <header>
+                    <button name="action_ask" type="object" string="Gửi câu hỏi" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="question" string="Câu hỏi" placeholder="Nhập câu hỏi..."/>
+                    </group>
+                    <group>
+                        <field name="answer" string="Trả lời" attrs="{'invisible': [('answer', '=', False)]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_chatbot_tree" model="ir.ui.view">
+        <field name="name">chatbot.noiquy.chat.tree</field>
+        <field name="model">chatbot.noiquy.chat</field>
+        <field name="arch" type="xml">
+            <tree string="Chatbot">
+                <field name="question"/>
+                <field name="answer"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
