@@ -18,7 +18,7 @@
 [![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
 </div>
 
-# 1. Tổng quan về hệ thống
+## 1. Tổng quan về hệ thống
 
 Hệ thống được xây dựng trên nền tảng Odoo 15 nhằm hỗ trợ doanh nghiệp quản lý tập trung các nghiệp vụ cốt lõi, bao gồm quản lý nhân sự, quản lý khách hàng và quản lý công việc. Hệ thống được thiết kế theo mô hình ERP module hóa, cho phép các chức năng liên kết chặt chẽ với nhau, đồng thời đảm bảo tính linh hoạt, dễ mở rộng và phù hợp với nhu cầu quản lý thực tế của doanh nghiệp.
 
@@ -72,21 +72,21 @@ Docker hỗ trợ triển khai cơ sở dữ liệu, trong khi GitHub được d
 Ngoài ra, hệ thống tích hợp Google Calendar API và Groq API để mở rộng chức năng.
 
 
-# 4. Cài đặt công cụ, môi trường và các thư viện cần thiết
+## 4. Cài đặt công cụ, môi trường và các thư viện cần thiết
 
-## 4.1. Clone project.
+### 4.1. Clone project.
 ```
 git clone https://github.com/pnguyen1310/TTDN-16-01-N1.git
 git checkout 
 ```
-## 4.2. cài đặt các thư viện cần thiết
+### 4.2. cài đặt các thư viện cần thiết
 
 Người sử dụng thực thi các lệnh sau đề cài đặt các thư viện cần thiết
 
 ```
 sudo apt-get install libxml2-dev libxslt-dev libldap2-dev libsasl2-dev libssl-dev python3.10-distutils python3.10-dev build-essential libssl-dev libffi-dev zlib1g-dev python3.10-venv libpq-dev
 ```
-## 4.3. khởi tạo môi trường ảo.
+### 4.3. khởi tạo môi trường ảo.
 
 `python3.10 -m venv ./venv`
 Thay đổi trình thông dịch sang môi trường ảo và chạy requirements.txt để cài đặt tiếp các thư viện được yêu cầu
@@ -96,14 +96,14 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## 4.4. Setup database
+### 4.4. Setup database
 
 Khởi tạo database trên docker bằng việc thực thi file dockercompose.yml.
 
 `docker-compose up -d`
 
-## 4.5. Setup tham số chạy cho hệ thống
-### Khởi tạo odoo.conf
+### 4.5. Setup tham số chạy cho hệ thống
+#### Khởi tạo odoo.conf
 Tạo tệp **odoo.conf** có nội dung như sau:
 
 ```
@@ -126,11 +126,11 @@ Ngoài ra có thể thêm mổ số parameters như:
 --dev=all giúp bật chế độ nhà phát triển 
 ```
 
-## 4.7. Chạy hệ thống và cài đặt các ứng dụng cần thiết
+### 4.7. Chạy hệ thống và cài đặt các ứng dụng cần thiết
 
 Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ để đăng nhập vào hệ thống.
     
-# 📞 5. Liên hệ
+## 📞 5. Liên hệ
 - 👨‍🎓 **Sinh viên thực hiện**: Nguyễn Đào Phúc Nguyên
 - 🎓 **Khoa**: Công nghệ thông tin – Đại học Đại Nam
 - 📧 **Email**: nguyendaophucnguyen13@gmail.com
